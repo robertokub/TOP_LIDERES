@@ -123,6 +123,7 @@ else
     git fetch origin
     git checkout -b "$BRANCH" "origin/$BRANCH"
   else
+    git remote set-url origin "$REPO" 2>/dev/null || true
     git fetch origin
     if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
       git checkout "$BRANCH"
