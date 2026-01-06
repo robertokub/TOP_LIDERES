@@ -49,6 +49,8 @@
         };
 
         // --- DADOS ORIGINAIS ---
+        const DATA_VERSION = 5; // Atualize esta versão quando quiser forçar recarga dos dados iniciais
+        const STORAGE_KEY = `topLideresData_v${DATA_VERSION}`;
         const initialData = [
             {"role1":"TE","role2":"","candidate":"Deputado Faria de Sá","city":"São Paulo","state":"SP","demand":"Entrevista em forma de Linha do Tempo para: Definição de branding e criação de \"Jornal do Candidato\"(Revista Digital com histórico do candidato)","date":"2026-01-15","status":"Pendente","id":1767647088939,"deliveryLink":""},
             {"role1":"TE","role2":"","candidate":"Vereador Paulinho Condutores","city":"Jacareí","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088940},
@@ -132,7 +134,7 @@
 
         function App() {
             const [demands, setDemands] = useState(() => {
-                const saved = localStorage.getItem('topLideresData_v4'); 
+                const saved = localStorage.getItem(STORAGE_KEY);
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     return parsed.map(item => ({
@@ -146,6 +148,7 @@
             });
 
             const [searchTerm, setSearchTerm] = useState("");
+            const [dataVersion, setDataVersion] = useState(DATA_VERSION);
             const [filterStatus, setFilterStatus] = useState("all");
             const [showForm, setShowForm] = useState(false);
             const [editingId, setEditingId] = useState(null);
@@ -168,7 +171,7 @@
             });
 
             useEffect(() => {
-                localStorage.setItem('topLideresData_v4', JSON.stringify(demands));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(demands));
             }, [demands]);
 
             // Estatísticas
@@ -287,6 +290,20 @@
 
             const handleImportClick = () => { fileInputRef.current.click(); };
 
+            const clearStoredData = () => {
+                // Remove todas as chaves antigas que começam com topLideresData_v
+                Object.keys(localStorage).forEach(k => {
+                    if (k.startsWith('topLideresData_v')) {
+                        localStorage.removeItem(k);
+                    }
+                });
+                // Regravando a versão atual com initialData
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
+                setDemands(initialData);
+                setDataVersion(DATA_VERSION);
+                alert('Dados iniciais recarregados com sucesso.');
+            };
+
             const handleFileChange = (e) => {
                 const file = e.target.files[0];
                 if (!file) return;
@@ -375,6 +392,9 @@
                                 </button>
                                 <button onClick={handleImportClick} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-slate-200">
                                     <Icon name="upload" className="w-4 h-4" /> Importar
+                                </button>
+                                <button onClick={() => { if (confirm('Remover dados salvos no navegador e recarregar os dados iniciais?')) { clearStoredData(); } }} className="px-3 py-2 text-blue-700 hover:bg-blue-50 border border-blue-200 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                                    <Icon name="refresh-cw" className="w-4 h-4" /> Recarregar dados iniciais
                                 </button>
                                 <button onClick={() => { if(showForm) handleCancelForm(); else setShowForm(true); }} className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2 shadow-sm ${showForm ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}>
                                     {showForm ? <><Icon name="x" className="w-4 h-4" /> Cancelar</> : <><Icon name="plus" className="w-4 h-4" /> Nova Demanda</>}

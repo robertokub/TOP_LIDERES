@@ -52,9 +52,7 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
   mkdir -p "$REMOTE_DIR"
   cd "$REMOTE_DIR"
 
-  if [ -z "\
-  \"\
-  \"\$(ls -A .)\"\" ]; then
+  if [ -z "$(ls -A .)" ]; then
     echo "Diretório vazio — clonando branch $BRANCH"
     git clone -b "$BRANCH" "$REPO_SSH" .
   else
@@ -79,7 +77,7 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
   fi
 
   echo "Deploy finalizado em \$(pwd)"
-  EOF
+EOF
 
 fi
 
@@ -90,8 +88,7 @@ set -euo pipefail
 mkdir -p "$REMOTE_DIR"
 cd "$REMOTE_DIR"
 
-if [ -z "
-""$(ls -A .)"" ]; then
+if [ -z "$(ls -A .)" ]; then
   echo "Diretório vazio — clonando branch $BRANCH"
   git clone -b "$BRANCH" "$REPO" .
 else
