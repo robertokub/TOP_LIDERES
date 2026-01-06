@@ -77,6 +77,7 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
       git fetch origin
       git checkout -b "$BRANCH" "origin/$BRANCH"
     else
+      git remote set-url origin "$REPO" 2>/dev/null || true
       git fetch origin
       if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
         git checkout "$BRANCH"
@@ -129,17 +130,6 @@ else
       git checkout -b "$BRANCH" "origin/$BRANCH"
     fi
     git pull origin "$BRANCH"
-
-    # Auto-bump DATA_VERSION para forçar recarga dos dados no cliente
-    TS=$(date +%s)
-    echo "Atualizando DATA_VERSION para $TS em index.html e DEMANDAS-TOP.html"
-    sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
-    git config user.email "deploy@homoapp.shop" || true
-    git config user.name "deploy-bot" || true
-    git remote set-url origin git@github.com:robertokub/TOP_LIDERES.git || true
-    git add index.html DEMANDAS-TOP.html || true
-    git commit -m "Auto-bump DATA_VERSION to $TS (deploy)" || true
-    git push origin "$BRANCH" || true
   fi
 fi
 EOF
