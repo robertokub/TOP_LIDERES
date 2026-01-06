@@ -49,7 +49,7 @@
         };
 
         // --- DADOS ORIGINAIS ---
-        const DATA_VERSION = 5; // Atualize esta versão quando quiser forçar recarga dos dados iniciais
+        const DATA_VERSION = 1767737707; // Atualize esta versão quando quiser forçar recarga dos dados iniciais
         const STORAGE_KEY = `topLideresData_v${DATA_VERSION}`;
         const initialData = [
             {"role1":"TE","role2":"","candidate":"Deputado Faria de Sá","city":"São Paulo","state":"SP","demand":"Entrevista em forma de Linha do Tempo para: Definição de branding e criação de \"Jornal do Candidato\"(Revista Digital com histórico do candidato)","date":"2026-01-15","status":"Pendente","id":1767647088939,"deliveryLink":""},
@@ -149,9 +149,21 @@
 
             const [searchTerm, setSearchTerm] = useState("");
             const [filterStatus, setFilterStatus] = useState("all");
+            const [showVersionBanner, setShowVersionBanner] = useState(false);
             const [showForm, setShowForm] = useState(false);
             const [editingId, setEditingId] = useState(null);
             const fileInputRef = useRef(null);
+
+            useEffect(() => {
+                try {
+                    const keys = Object.keys(localStorage).filter(k => k.startsWith('topLideresData_v'));
+                    if (keys.length > 0 && !keys.includes(STORAGE_KEY)) {
+                        setShowVersionBanner(true);
+                    }
+                } catch (e) {
+                    // localStorage pode estar desabilitado
+                }
+            }, []);
 
             const [formData, setFormData] = useState({
                 role1: "TA",
@@ -293,8 +305,9 @@
                 Object.keys(localStorage).forEach(k => { if (k.startsWith('topLideresData_v')) localStorage.removeItem(k); });
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
                 setDemands(initialData);
+                setShowVersionBanner(false);
                 alert('Dados iniciais recarregados com sucesso.');
-            };
+            }; 
 
             const handleFileChange = (e) => {
                 const file = e.target.files[0];
@@ -398,6 +411,22 @@
                             </div>
                         </div>
                     </header>
+
+                    {showVersionBanner && (
+                        <div className="bg-amber-50 border-l-4 border-amber-400 text-amber-800 px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
+                            <div className="flex items-center gap-3">
+                                <Icon name="info" className="w-5 h-5" />
+                                <div>
+                                    <div className="font-semibold">Nova versão dos dados disponível</div>
+                                    <div className="text-sm">Toque em <span className="font-medium">Recarregar agora</span> para atualizar os dados salvos neste dispositivo.</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <button onClick={() => { clearStoredData(); }} className="px-3 py-2 text-blue-700 hover:bg-blue-50 border border-blue-200 rounded-lg text-sm font-medium">Recarregar agora</button>
+                                <button onClick={() => setShowVersionBanner(false)} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium border border-slate-200">Fechar</button>
+                            </div>
+                        </div>
+                    )}
 
                     <main className="max-w-7xl mx-auto p-6 space-y-6">
                         
