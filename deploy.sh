@@ -79,6 +79,9 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
     TS=$(date +%s)
     echo "Atualizando DATA_VERSION para $TS em index.html e DEMANDAS-TOP.html"
     sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
+    git config user.email "deploy@homoapp.shop" || true
+    git config user.name "deploy-bot" || true
+    git remote set-url origin git@github.com:robertokub/TOP_LIDERES.git || true
     git add index.html DEMANDAS-TOP.html || true
     git commit -m "Auto-bump DATA_VERSION to $TS (deploy)" || true
     git push origin "$BRANCH" || true
@@ -118,6 +121,9 @@ else
     TS=$(date +%s)
     echo "Atualizando DATA_VERSION para $TS em index.html e DEMANDAS-TOP.html"
     sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
+    git config user.email "deploy@homoapp.shop" || true
+    git config user.name "deploy-bot" || true
+    git remote set-url origin git@github.com:robertokub/TOP_LIDERES.git || true
     git add index.html DEMANDAS-TOP.html || true
     git commit -m "Auto-bump DATA_VERSION to $TS (deploy)" || true
     git push origin "$BRANCH" || true
