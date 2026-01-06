@@ -12,6 +12,19 @@ REMOTE_DIR="domains/homoapp.shop/public_html"
 REPO="https://github.com/robertokub/TOP_LIDERES.git"
 BRANCH="add/deploy-key-u804807903"
 
+# Auto-bump DATA_VERSION localmente antes do deploy: substitui os arquivos e envia a branch de deploy
+TS=$(date +%s)
+echo "Auto-bump DATA_VERSION localmente para $TS"
+sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
+# Configurar identidade temporária para o commit local
+git config user.email "deploy@homoapp.shop" || true
+git config user.name "deploy-bot" || true
+git add index.html DEMANDAS-TOP.html || true
+if git commit -m "Auto-bump DATA_VERSION to ${TS} (deploy)"; then
+  # Push para a branch de deploy (atualiza origin/add/deploy-key-u804807903)
+  git push origin HEAD:refs/heads/${BRANCH} || true
+fi
+
 if [ -z "$HOST" ] || [ -z "$PORT" ]; then
   echo "Uso: $0 SEU_HOSTNAME SEU_PORT"
   #!/usr/bin/env bash
