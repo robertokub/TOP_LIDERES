@@ -11,6 +11,8 @@ USER="u804807903"
 REMOTE_DIR="domains/homoapp.shop/public_html"
 REPO="https://github.com/robertokub/TOP_LIDERES.git"
 BRANCH="add/deploy-key-u804807903"
+SSH_KEY_PATH="${SSH_KEY_PATH:-$HOME/.ssh/id_ed25519_homoapp}"
+SSH_OPTS="-i ${SSH_KEY_PATH} -p ${PORT} -o StrictHostKeyChecking=no"
 
 # Auto-bump DATA_VERSION localmente antes do deploy: substitui os arquivos e envia a branch de deploy
 TS=$(date +%s)
@@ -95,7 +97,7 @@ fi
 
 echo "Conectando em $USER@$HOST:$PORT e preparando deploy em $REMOTE_DIR"
 
-ssh -p "$PORT" "$USER@$HOST" "REMOTE_DIR='$REMOTE_DIR' REPO='$REPO' BRANCH='$BRANCH' bash -s" <<'EOF'
+ssh $SSH_OPTS "$USER@$HOST" "REMOTE_DIR='$REMOTE_DIR' REPO='$REPO' BRANCH='$BRANCH' bash -s" <<'EOF'
 set -euo pipefail
 mkdir -p "$REMOTE_DIR"
 cd "$REMOTE_DIR"
