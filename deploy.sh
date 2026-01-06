@@ -67,13 +67,13 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
 
   if [ -z "$(ls -A .)" ]; then
     echo "Diretório vazio — clonando branch $BRANCH"
-    git clone -b "$BRANCH" "$REPO_SSH" .
+    git clone -b "$BRANCH" "$REPO" .
   else
     echo "Pasta com conteúdo — conectando ao repositório"
     if [ ! -d .git ]; then
       git init
       git remote remove origin 2>/dev/null || true
-      git remote add origin "$REPO_SSH"
+      git remote add origin "$REPO"
       git fetch origin
       git checkout -b "$BRANCH" "origin/$BRANCH"
     else
