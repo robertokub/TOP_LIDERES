@@ -46,7 +46,7 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
 
   echo "Conectando em $USER@$HOST:$PORT e preparando deploy em $REMOTE_DIR"
 
-  ssh $SSH_OPTS "$USER@$HOST" bash -s <<EOF
+  ssh $SSH_OPTS "$USER@$HOST" bash -s <<'EOF'
   set -euo pipefail
 
   mkdir -p "$REMOTE_DIR"
@@ -90,7 +90,7 @@ fi
 
 echo "Conectando em $USER@$HOST:$PORT e preparando deploy em $REMOTE_DIR"
 
-ssh -p "$PORT" "$USER@$HOST" bash -s <<EOF
+ssh -p "$PORT" "$USER@$HOST" bash -s <<'EOF'
 set -euo pipefail
 mkdir -p "$REMOTE_DIR"
 cd "$REMOTE_DIR"
