@@ -74,7 +74,14 @@ if [ -z "$HOST" ] || [ -z "$PORT" ]; then
 
     echo "Atualizando código a partir de origin/$BRANCH"
     git pull origin "$BRANCH"
-  fi
+
+    # Auto-bump DATA_VERSION para forçar recarga dos dados no cliente
+    TS=$(date +%s)
+    echo "Atualizando DATA_VERSION para $TS em index.html e DEMANDAS-TOP.html"
+    sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
+    git add index.html DEMANDAS-TOP.html || true
+    git commit -m "Auto-bump DATA_VERSION to $TS (deploy)" || true
+    git push origin "$BRANCH" || true
 
   echo "Deploy finalizado em \$(pwd)"
 EOF
@@ -106,6 +113,14 @@ else
       git checkout -b "$BRANCH" "origin/$BRANCH"
     fi
     git pull origin "$BRANCH"
+
+    # Auto-bump DATA_VERSION para forçar recarga dos dados no cliente
+    TS=$(date +%s)
+    echo "Atualizando DATA_VERSION para $TS em index.html e DEMANDAS-TOP.html"
+    sed -i -E "s/const DATA_VERSION = [0-9]+;/const DATA_VERSION = ${TS};/g" index.html DEMANDAS-TOP.html || true
+    git add index.html DEMANDAS-TOP.html || true
+    git commit -m "Auto-bump DATA_VERSION to $TS (deploy)" || true
+    git push origin "$BRANCH" || true
   fi
 fi
 EOF
