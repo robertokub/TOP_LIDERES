@@ -48,36 +48,152 @@
             "TA": { label: "TA", title: "Outros", color: "bg-yellow-400 text-slate-900 border-yellow-500", lightColor: "bg-yellow-50 text-yellow-800 border-yellow-200" }
         };
 
-        // --- DADOS ORIGINAIS ---
-        const DATA_VERSION = 1767739503; // Atualize esta versão quando quiser forçar recarga dos dados iniciais
-        const STORAGE_KEY = `topLideresData_v${DATA_VERSION}`;
+        // --- DADOS IMPORTADOS DO BACKUP (2026-01-06) ---
         const initialData = [
-            {"role1":"TE","role2":"","candidate":"Deputado Faria de Sá","city":"São Paulo","state":"SP","demand":"Entrevista em forma de Linha do Tempo para: Definição de branding e criação de \"Jornal do Candidato\"(Revista Digital com histórico do candidato)","date":"2026-01-15","status":"Pendente","id":1767647088939,"deliveryLink":""},
-            {"role1":"TE","role2":"","candidate":"Vereador Paulinho Condutores","city":"Jacareí","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088940},
-            {"role1":"TE","role2":"","candidate":"Vereador Anderson Martins","city":"Praia Grande","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088941},
-            {"role1":"TE","role2":"","candidate":"Vereador Dika Xique Xique","city":"Jundiaí","state":"SP","demand":"Visita a sede do partido, Entrevista, Fotos, Cronograma de Postagens","date":"2026-01-13","status":"Pendente","id":1767647088942,"deliveryLink":""},
-            {"role1":"TE","role2":"","candidate":"Vereador Val Advogado","city":"Guarujá","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088943},
-            {"role1":"TE","role2":"","candidate":"Vereador Babá da Farmácia","city":"Sertãozinho","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088944},
-            {"role1":"TE","role2":"","candidate":"Vereador Anderson Bernardes","city":"Guarujá","state":"SP","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088945},
-            {"role1":"TL","role2":"TM","candidate":"Sandra Lacerda","city":"Macapá","state":"AP","demand":"Reunião NOVOS MODELOS DE NEGÓCIOS - Associações e Cooperativas para geração de recursos para MULHERES e JOVENS. Incluirmos tema sobre a Formação de Jovens Empreendedores (FJE) Sebrae - Projeto para alunos do ensino médio a partir dos 15 anos.","date":"2026-01-07","status":"Pendente","id":1767647088946,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Professora Goreth","city":"Macapá","state":"AP","demand":"Agendar reunião Salas Google e consultoria projetos para jovens","date":"2026-01-06","status":"Pendente","id":1767647088947,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Dayane Santos","city":"Fortaleza","state":"CE","demand":"Mockup cartão de visita e logomarca","date":"2025-12-17","status":"Realizada","deliveryLink":"https://drive.google.com/drive/folders/1BsCZaKGCzzankq43KzboAYBPcKd9bDJ3?usp=drive_link","id":1767647088948},
-            {"role1":"TE","role2":"","candidate":"GUTO","city":"Carapicuiba","state":"SP","demand":"Entrevista","date":"2026-01-07","status":"Pendente","id":1767647088949,"deliveryLink":""},
-            {"role1":"TE","role2":"","candidate":"Vereador Jefferson","city":"São Vicente","state":"SP","demand":"Entrevista","date":"2026-01-07","status":"Pendente","id":1767647088950,"deliveryLink":""},
-            {"role1":"TE","role2":"","candidate":"EMERSOM","city":"Cotia","state":"SP","demand":"Entrevista","date":"2026-01-07","status":"Pendente","id":1767647088951,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Amanda CSI","city":"João Pessoa","state":"PB","demand":"Ebook","date":"2026-01-05","status":"Pendente","id":1767647088952,"deliveryLink":""},
-            {"role1":"TL","role2":"","candidate":"Rosiney","city":"Palhoça","state":"SC","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088953,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Cris Loureiro","city":"Blumenau","state":"SC","demand":"Entrevista em forma de Linha do Tempo para: Definição de branding e criação de \"Jornal do Candidato\"(Revista Digital com histórico do candidato)","date":"2025-12-20","status":"Pendente","id":1767647088954,"deliveryLink":""},
-            {"role1":"TL","role2":"","candidate":"Paulo Soares","city":"Jaú","state":"SP","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088955,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Dayanne Costa","city":"Fortaleza","state":"CE","demand":"entrevista","date":"12026-01-05","status":"Realizada","deliveryLink":"https://drive.google.com/drive/folders/1jMg5dT9udOojvh9ACVhO-hGRiHr4zCSh?usp=drive_link","id":1767647088956},
-            {"role1":"TE","role2":"TM","candidate":"Katia Dias","city":"Juiz de Fora","state":"MG","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088957,"deliveryLink":""},
-            {"role1":"TL","role2":"","candidate":"Philipe Lemos","city":"Vitória","state":"ES","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088958,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Professora Goreth","city":"Macapá","state":"AP","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088959,"deliveryLink":""},
-            {"role1":"TL","role2":"","candidate":"Dr. Levi Lorenzo","city":"Gravataí","state":"RS","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088961,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Sandra Lacerda","city":"Macapá","state":"AP","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088962,"deliveryLink":""},
-            {"role1":"TL","role2":"TM","candidate":"Corinha Molling","city":"Sapiranga","state":"RS","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088963,"deliveryLink":""},
-            {"role1":"TL","role2":"","candidate":"Dep. Samuel Santos","city":"Goiania","state":"GO","demand":"Entrevista","date":"2026-01-15","status":"Pendente","deliveryLink":"","id":1767647088964},
-            {"role1":"TL","role2":"","candidate":"Caio Cunha","city":"Mogi das Cruzes","state":"SP","demand":"Entrevista","date":"2026-01-05","status":"Pendente","id":1767647088965,"deliveryLink":""}
+            {
+                "role1": "TE",
+                "role2": "",
+                "candidate": "Deputado Faria de Sá",
+                "city": "São Paulo",
+                "state": "SP",
+                "demand": "Entrevista em forma de Linha do Tempo para: Definição de branding e criação de \"Jornal do Candidato\"(Revista Digital com histórico do candidato)",
+                "date": "2026-01-15",
+                "status": "Pendente",
+                "id": 1767647088939,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TE",
+                "role2": "",
+                "candidate": "Vereador Paulinho Condutores",
+                "city": "Jacareí",
+                "state": "SP",
+                "demand": "Entrevista",
+                "date": "2026-01-15",
+                "status": "Pendente",
+                "deliveryLink": "",
+                "id": 1767647088940
+            },
+            {
+                "role1": "TE",
+                "role2": "",
+                "candidate": "Vereador Anderson Martins",
+                "city": "Praia Grande",
+                "state": "SP",
+                "demand": "Entrevista",
+                "date": "2026-01-15",
+                "status": "Pendente",
+                "deliveryLink": "",
+                "id": 1767647088941
+            },
+            {
+                "role1": "TE",
+                "role2": "",
+                "candidate": "Vereador Dika Xique Xique",
+                "city": "Jundiaí",
+                "state": "SP",
+                "demand": "Entrevista",
+                "date": "2026-01-15",
+                "status": "Pendente",
+                "id": 1767647088942,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TL",
+                "role2": "",
+                "candidate": "Philipe Lemos",
+                "city": "Vitória",
+                "state": "ES",
+                "demand": "Entrevista",
+                "date": "2026-01-05",
+                "status": "Pendente",
+                "id": 1767647088958,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TL",
+                "role2": "TM",
+                "candidate": "Professora Goreth",
+                "city": "Macapá",
+                "state": "AP",
+                "demand": "Entrevista",
+                "date": "2026-01-05",
+                "status": "Pendente",
+                "id": 1767647088959,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TL",
+                "role2": "",
+                "candidate": "Dr. Levi Lorenzo",
+                "city": "Gravataí",
+                "state": "RS",
+                "demand": "Entrevista",
+                "date": "2026-01-05",
+                "status": "Pendente",
+                "id": 1767647088961,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TL",
+                "role2": "TM",
+                "candidate": "Sandra Lacerda",
+                "city": "Macapá",
+                "state": "AP",
+                "demand": "Entrevista",
+                "date": "2026-01-05",
+                "status": "Pendente",
+                "id": 1767647088962,
+                "deliveryLink": ""
+            },
+            {
+                "role1": "TL",
+                "role2": "TM",
+                "candidate": "Corinha Molling",
+                "city": "Sapiranga",
+                "state": "RS",
+                "demand": "Entrevista",
+                "date": "2026-01-05",
+                "status": "Pendente",
+                "id": 1767647088963,
+                "deliveryLink": ""
+            },
+            {
+                "id": 10,
+                "role1": "TE",
+                "role2": "",
+                "candidate": "GUTO",
+                "city": "Carapicuíba",
+                "state": "SP",
+                "demand": "Aguardando preenchimento do forms. Dobrada forte com ex prefeito Neves. Quer fazer o prox encontro presencial na sede.",
+                "date": "2024-11-27",
+                "status": "Realizada",
+                "deliveryLink": ""
+            },
+            {
+                "id": 11,
+                "role1": "TA",
+                "role2": "",
+                "candidate": "Ver. Jefferson",
+                "city": "São Vicente",
+                "state": "SP",
+                "demand": "Parceiro 100%. Sugestão de indicar para o legislabrasil.",
+                "date": "2024-12-01",
+                "status": "Realizada",
+                "deliveryLink": ""
+            },
+            {
+                "id": 12,
+                "role1": "TE",
+                "role2": "",
+                "candidate": "EMERSOM",
+                "city": "Cotia",
+                "state": "SP",
+                "demand": "Empresário popular. Em 2024 comandou PP, União, PSB e elegeu 5 vereadores. Hoje declara o apoio consolidado de 6 vereadores em Cotia.",
+                "date": "2024-12-02",
+                "status": "Realizada",
+                "deliveryLink": ""
+            }
         ];
 
         const Icon = ({ name, className }) => {
@@ -134,7 +250,7 @@
 
         function App() {
             const [demands, setDemands] = useState(() => {
-                const saved = localStorage.getItem(STORAGE_KEY);
+                const saved = localStorage.getItem('topLideresData_v4'); 
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     return parsed.map(item => ({
@@ -147,24 +263,12 @@
                 return initialData;
             });
 
+            const [isEditingMode, setIsEditingMode] = useState(false);
             const [searchTerm, setSearchTerm] = useState("");
-            const [dataVersion, setDataVersion] = useState(DATA_VERSION);
             const [filterStatus, setFilterStatus] = useState("all");
-            const [showVersionBanner, setShowVersionBanner] = useState(false);
             const [showForm, setShowForm] = useState(false);
             const [editingId, setEditingId] = useState(null);
             const fileInputRef = useRef(null);
-
-            useEffect(() => {
-                try {
-                    const keys = Object.keys(localStorage).filter(k => k.startsWith('topLideresData_v'));
-                    if (keys.length > 0 && !keys.includes(STORAGE_KEY)) {
-                        setShowVersionBanner(true);
-                    }
-                } catch (e) {
-                    // localStorage pode estar desabilitado em alguns ambientes
-                }
-            }, []);
 
             const [formData, setFormData] = useState({
                 role1: "TA",
@@ -183,7 +287,7 @@
             });
 
             useEffect(() => {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(demands));
+                localStorage.setItem('topLideresData_v4', JSON.stringify(demands));
             }, [demands]);
 
             // Estatísticas
@@ -217,6 +321,22 @@
                 };
             }, [demands]);
 
+            const handleLogin = () => {
+                const password = prompt("Digite a senha para habilitar o modo de edição:");
+                if (password === "secomsptop") {
+                    setIsEditingMode(true);
+                    alert("Modo de edição habilitado!");
+                } else {
+                    alert("Senha incorreta.");
+                }
+            };
+
+            const handleLogout = () => {
+                setIsEditingMode(false);
+                setShowForm(false);
+                setEditingId(null);
+            };
+
             const handleInputChange = (e) => {
                 const { name, value } = e.target;
                 setFormData(prev => ({ ...prev, [name]: value }));
@@ -238,6 +358,7 @@
             };
 
             const handleEdit = (item) => {
+                if (!isEditingMode) return;
                 setFormData({
                     role1: item.role1 || "TA",
                     role2: item.role2 || "",
@@ -255,6 +376,7 @@
             };
 
             const handleDelete = (id) => {
+                if (!isEditingMode) return;
                 if (confirm("Tem certeza que deseja remover esta demanda?")) {
                     setDemands(demands.filter(d => d.id !== id));
                     if (editingId === id) handleCancelForm();
@@ -301,21 +423,6 @@
             };
 
             const handleImportClick = () => { fileInputRef.current.click(); };
-
-            const clearStoredData = () => {
-                // Remove todas as chaves antigas que começam com topLideresData_v
-                Object.keys(localStorage).forEach(k => {
-                    if (k.startsWith('topLideresData_v')) {
-                        localStorage.removeItem(k);
-                    }
-                });
-                // Regravando a versão atual com initialData
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
-                setDemands(initialData);
-                setDataVersion(DATA_VERSION);
-                setShowVersionBanner(false);
-                alert('Dados iniciais recarregados com sucesso.');
-            };
 
             const handleFileChange = (e) => {
                 const file = e.target.files[0];
@@ -397,40 +504,33 @@
                             </div>
                             <div className="flex flex-wrap gap-2 items-center">
                                 <input type="file" ref={fileInputRef} onChange={handleFileChange} accept=".json" className="hidden" />
-                                <button onClick={handleExportCSV} className="px-3 py-2 text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg text-sm font-medium transition flex items-center gap-2">
-                                    <Icon name="table" className="w-4 h-4" /> Exportar Planilha
-                                </button>
-                                <button onClick={handleExportJSON} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-slate-200">
-                                    <Icon name="download" className="w-4 h-4" /> Backup
-                                </button>
-                                <button onClick={handleImportClick} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-slate-200">
-                                    <Icon name="upload" className="w-4 h-4" /> Importar
-                                </button>
-                                <button onClick={() => { if (confirm('Remover dados salvos no navegador e recarregar os dados iniciais?')) { clearStoredData(); } }} className="px-3 py-2 text-blue-700 hover:bg-blue-50 border border-blue-200 rounded-lg text-sm font-medium transition flex items-center gap-2">
-                                    <Icon name="refresh-cw" className="w-4 h-4" /> Recarregar dados iniciais
-                                </button>
-                                <button onClick={() => { if(showForm) handleCancelForm(); else setShowForm(true); }} className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2 shadow-sm ${showForm ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}>
-                                    {showForm ? <><Icon name="x" className="w-4 h-4" /> Cancelar</> : <><Icon name="plus" className="w-4 h-4" /> Nova Demanda</>}
-                                </button>
+                                
+                                {isEditingMode ? (
+                                    <>
+                                        <button onClick={handleExportCSV} className="px-3 py-2 text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                                            <Icon name="table" className="w-4 h-4" /> Exportar Planilha
+                                        </button>
+                                        <button onClick={handleExportJSON} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-slate-200">
+                                            <Icon name="download" className="w-4 h-4" /> Backup
+                                        </button>
+                                        <button onClick={handleImportClick} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-slate-200">
+                                            <Icon name="upload" className="w-4 h-4" /> Importar
+                                        </button>
+                                        <button onClick={() => { if(showForm) handleCancelForm(); else setShowForm(true); }} className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2 shadow-sm ${showForm ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}>
+                                            {showForm ? <><Icon name="x" className="w-4 h-4" /> Cancelar</> : <><Icon name="plus" className="w-4 h-4" /> Nova Demanda</>}
+                                        </button>
+                                        <button onClick={handleLogout} className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium transition flex items-center gap-2 border border-red-200 ml-2">
+                                            <Icon name="lock" className="w-4 h-4" /> Bloquear Edição
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button onClick={handleLogin} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                                        <Icon name="unlock" className="w-4 h-4" /> Liberar Edição
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </header>
-
-                    {showVersionBanner && (
-                        <div className="bg-amber-50 border-l-4 border-amber-400 text-amber-800 px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
-                            <div className="flex items-center gap-3">
-                                <Icon name="info" className="w-5 h-5" />
-                                <div>
-                                    <div className="font-semibold">Nova versão dos dados disponível</div>
-                                    <div className="text-sm">Toque em <span className="font-medium">Recarregar agora</span> para atualizar os dados salvos neste dispositivo.</div>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <button onClick={() => { clearStoredData(); }} className="px-3 py-2 text-blue-700 hover:bg-blue-50 border border-blue-200 rounded-lg text-sm font-medium">Recarregar agora</button>
-                                <button onClick={() => setShowVersionBanner(false)} className="px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium border border-slate-200">Fechar</button>
-                            </div>
-                        </div>
-                    )}
 
                     <main className="max-w-7xl mx-auto p-6 space-y-6">
                         
@@ -667,7 +767,7 @@
                                             <th className="px-6 py-4 w-1/3">Demanda (Comunicação)</th>
                                             <th className="px-6 py-4">Data Entrega</th>
                                             <th className="px-6 py-4">Status</th>
-                                            <th className="px-6 py-4 text-right">Ações</th>
+                                            {isEditingMode && <th className="px-6 py-4 text-right">Ações</th>}
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100">
@@ -710,24 +810,26 @@
                                                 <td className="px-6 py-4">
                                                     <StatusBadge status={item.status} date={item.date} />
                                                 </td>
-                                                <td className="px-6 py-4 text-right">
-                                                    <div className="flex items-center justify-end gap-2">
-                                                        <button 
-                                                            onClick={() => handleEdit(item)}
-                                                            className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-                                                            title="Editar"
-                                                        >
-                                                            <Icon name="pencil" className="w-4 h-4" />
-                                                        </button>
-                                                        <button 
-                                                            onClick={() => handleDelete(item.id)}
-                                                            className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                                                            title="Excluir"
-                                                        >
-                                                            <Icon name="trash-2" className="w-4 h-4" />
-                                                        </button>
-                                                    </div>
-                                                </td>
+                                                {isEditingMode && (
+                                                    <td className="px-6 py-4 text-right">
+                                                        <div className="flex items-center justify-end gap-2">
+                                                            <button 
+                                                                onClick={() => handleEdit(item)}
+                                                                className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                                                                title="Editar"
+                                                            >
+                                                                <Icon name="pencil" className="w-4 h-4" />
+                                                            </button>
+                                                            <button 
+                                                                onClick={() => handleDelete(item.id)}
+                                                                className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                                                title="Excluir"
+                                                            >
+                                                                <Icon name="trash-2" className="w-4 h-4" />
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                )}
                                             </tr>
                                         ))}
                                         {filteredData.length === 0 && (
@@ -743,7 +845,7 @@
                         </div>
                         <div className="flex justify-between items-center text-xs text-slate-400 mt-8">
                             <span>Sistema de Gestão TOP Líderes - v4.3 (Links de Entrega)</span>
-                            <button onClick={handleReset} className="hover:text-red-500 underline">Resetar para Padrão</button>
+                            {isEditingMode && <button onClick={handleReset} className="hover:text-red-500 underline">Resetar para Padrão</button>}
                         </div>
                     </main>
                 </div>
